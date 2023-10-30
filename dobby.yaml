@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: another-dobby-pod
+  labels:
+    app: dobby-pod
+spec:
+  containers:
+    - name: dobby
+      image: thecasualcoder/dobby
+      ports:
+        - containerPort: 4444
+      env:
+        - name: someenvvar
+          value: '8723'
+      securityContext:
+        allowPrivilegeEscalation: false

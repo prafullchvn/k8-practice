@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+  labels:
+    app: dobby-pod
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+    - name: dobby
+      image: thecasualcoder/dobby
+      ports:
+        - containerPort: 4444
+      env:
+        - name: someenvvar
+          value: '8723'
+        - name: TEST_ENV_VAR
+          value: 'some test value'
+      securityContext:
+        allowPrivilegeEscalation: false

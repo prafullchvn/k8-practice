@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-exp
+  namespace: configmap-exp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cm-exp
+  volumes:
+    - name: cm-volume
+      configMap:
+        name: test-configmap
+        items:
+          - key: TEST_VAR
+            path: test
+  template:
+    metadata:
+      labels:
+        app: cm-exp
+    spec:
+      containers:
+        - name: test-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+    volumeMounts:
+      - name: test-configmap
+        mountPath: /mounted-path

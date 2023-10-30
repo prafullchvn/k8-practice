@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-test
+  labels:
+    app: dobby-pod
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 2000
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 4444
+      securityContext:
+        allowPrivilegeEscalation: true

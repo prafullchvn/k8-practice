@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap
+  namespace: configmap-exp
+data:
+  TEST_VAR: 'this test value'
+  SOME_SVC_PORT: '8080'
